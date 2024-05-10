@@ -23,14 +23,6 @@
     "dist/",
     "src/"
   ],
-  "scripts": {
-    "build": "gulp",
-    "clean": "rimraf dist build",
-    "lint": "eslint .",
-    "release": "commit-and-tag-version",
-    "test": "jest",
-    "type-check": "tsc --noEmit --project ."
-  },
   "packageManager": "pnpm@6.32.4",
   "engines": {
     "node": ">=14.16"
