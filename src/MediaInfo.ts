@@ -219,10 +219,12 @@ class MediaInfo<TFormat extends FormatType = typeof DEFAULT_OPTIONS.format> {
   openBufferContinueGotoGet(): number {
     // JS bindings don't support 64 bit int
     // https://github.com/buzz/mediainfo.js/issues/11
-    const seekToLow: number = this.mediainfoModuleInstance.open_buffer_continue_goto_get_lower() & 0xffffffff
+    let seekToLow: number = this.mediainfoModuleInstance.open_buffer_continue_goto_get_lower()
     const seekToHigh: number = this.mediainfoModuleInstance.open_buffer_continue_goto_get_upper()
     if (seekToLow == -1 && seekToHigh == -1) {
       return -1
+    } else if (seekToLow < 0) {
+      seekToLow += 4294967296
     }
     return seekToLow + seekToHigh * 4294967296
   }
