@@ -44,7 +44,7 @@ public:
   // see https://github.com/buzz/mediainfo.js/issues/11
   int open_buffer_continue_goto_get_lower()
   {
-    return mi.Open_Buffer_Continue_GoTo_Get();
+    return mi.Open_Buffer_Continue_GoTo_Get() & 0xffffffff;
   }
   int open_buffer_continue_goto_get_upper()
   {
